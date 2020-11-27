@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F219759B2571A7950056B028 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759A2571A7950056B028 /* InfoView.swift */; };
 		F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99D925716F710000182D /* iSlotsApp.swift */; };
 		F24F99DC25716F710000182D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99DB25716F710000182D /* ContentView.swift */; };
 		F24F99DE25716F730000182D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24F99DD25716F730000182D /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F219759A2571A7950056B028 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F24F99D625716F710000182D /* iSlots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSlots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24F99D925716F710000182D /* iSlotsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSlotsApp.swift; sourceTree = "<group>"; };
 		F24F99DB25716F710000182D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				F268EFA2257196F900ADD4EA /* ReelView.swift */,
 				F268EF982571808E00ADD4EA /* LogoView.swift */,
 				F24F99D925716F710000182D /* iSlotsApp.swift */,
+				F219759A2571A7950056B028 /* InfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				F24F99DC25716F710000182D /* ContentView.swift in Sources */,
 				F268EF992571808E00ADD4EA /* LogoView.swift in Sources */,
 				F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */,
+				F219759B2571A7950056B028 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

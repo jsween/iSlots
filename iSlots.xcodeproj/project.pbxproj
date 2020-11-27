@@ -23,6 +23,7 @@
 		F268EF992571808E00ADD4EA /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268EF982571808E00ADD4EA /* LogoView.swift */; };
 		F268EF9C2571811D00ADD4EA /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268EF9B2571811D00ADD4EA /* Modifiers.swift */; };
 		F268EFA0257190B900ADD4EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268EF9F257190B900ADD4EA /* Extensions.swift */; };
+		F268EFA3257196F900ADD4EA /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268EFA2257196F900ADD4EA /* ReelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		F268EF982571808E00ADD4EA /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		F268EF9B2571811D00ADD4EA /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		F268EF9F257190B900ADD4EA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F268EFA2257196F900ADD4EA /* ReelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,6 @@
 		F24F99D825716F710000182D /* iSlots */ = {
 			isa = PBXGroup;
 			children = (
-				F24F99FD257173F30000182D /* App */,
 				F24F99FC257173EC0000182D /* Views */,
 				F24F99FB257173E50000182D /* Helpers */,
 				F24F99FA257173D30000182D /* Sounds */,
@@ -123,18 +124,12 @@
 		F24F99FC257173EC0000182D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F268EF982571808E00ADD4EA /* LogoView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F24F99FD257173F30000182D /* App */ = {
-			isa = PBXGroup;
-			children = (
 				F24F99DB25716F710000182D /* ContentView.swift */,
+				F268EFA2257196F900ADD4EA /* ReelView.swift */,
+				F268EF982571808E00ADD4EA /* LogoView.swift */,
 				F24F99D925716F710000182D /* iSlotsApp.swift */,
 			);
-			path = App;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F268EFA3257196F900ADD4EA /* ReelView.swift in Sources */,
 				F268EFA0257190B900ADD4EA /* Extensions.swift in Sources */,
 				F268EF9C2571811D00ADD4EA /* Modifiers.swift in Sources */,
 				F24F99DC25716F710000182D /* ContentView.swift in Sources */,

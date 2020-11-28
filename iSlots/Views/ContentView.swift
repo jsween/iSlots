@@ -13,13 +13,14 @@ struct ContentView: View {
     
     let symbols = [Symbols.bell.rawValue, Symbols.cherry.rawValue, Symbols.coin.rawValue, Symbols.grape.rawValue, Symbols.seven.rawValue, Symbols.strawberry.rawValue]
     
-    @State private var highScore: Int = 0
+    @State private var highScore: Int = UserDefaults.standard.integer(forKey: "HighScore")
     @State private var coins: Int = 100
     @State private var betAmount: Int = 10
     @State private var reels: Array = [0, 1, 2]
     @State private var showingInfoView: Bool = false
     @State private var bet10: Bool = true
     @State private var bet20: Bool = false
+    @State private var showingModal: Bool = false
     
     // MARK: - FUNCTIONS
     
@@ -33,10 +34,19 @@ struct ContentView: View {
     func checkWinning() {
         if reels[0] == reels[1] && reels[0] == reels[2] {
             // PLAYER WINS
-            coins += betAmount * 20
+            if symbols[reels[0]] == Symbols.cherry.rawValue {
+                coins += betAmount * 50
+            } else if symbols[reels[0]] == Symbols.seven.rawValue {
+                coins += betAmount * 40
+            } else if symbols[reels[0]] == Symbols.coin.rawValue {
+                coins += betAmount * 30
+            } else {
+                coins += betAmount * 20
+            }
             // NEW HIGH SCORE
             if coins > highScore {
                 highScore = coins
+                UserDefaults.standard.set(highScore, forKey: "HighScore")
             }
         } else {
             // PLAYER LOSES
@@ -44,16 +54,29 @@ struct ContentView: View {
         }
     }
     // GAME OVER
-    
+    func gameOver() {
+        if coins <= 0 {
+            // SHOW MODAL
+            showingModal = true
+        }
+    }
+    // RESET
+    func resetGame() {
+        UserDefaults.standard.set(0, forKey: "HighScore")
+        highScore = 0
+        coins = 100
+        bet10 = true
+        bet20 = false
+    }
     // MARK: - BODY
     
     var body: some View {
         ZStack {
-            // MARK: - BKGRND
+            // MARK: - BACKGROUND
             LinearGradient(gradient: Gradient(colors: [Color("ColorPink"), Color("ColorPurple")]), startPoint: .top, endPoint: .bottom).ignoresSafeArea(edges: .all)
             // MARK: - INTERFACE
             VStack(alignment: .center, spacing: 5) {
-                // MARK: - HEADER
+                // MARK: - HEADER5
                 LogoView()
                     .padding(.vertical, 5)
                 Spacer()
@@ -110,6 +133,7 @@ struct ContentView: View {
                     Button(action: {
                         self.spinReels()
                         self.checkWinning()
+                        self.gameOver()
                     }) {
                         Image("gfx-spin")
                             .renderingMode(.original)
@@ -168,7 +192,7 @@ struct ContentView: View {
             .overlay(
                 // RESET
                 Button(action: {
-                    print("Reset Game")
+                    self.resetGame()
                 }) {
                     Image(systemName: "arrow.2.circlepath.circle")
                 }
@@ -187,6 +211,63 @@ struct ContentView: View {
             )
             .padding()
             .frame(maxWidth: 720)
+            .blur(radius: $showingModal.wrappedValue ? 5 : 0, opaque: false)
+            
+            // MARK: - POPUP
+            if $showingModal.wrappedValue {
+                ZStack {
+                    Color("ColorTransparentBlack").edgesIgnoringSafeArea(.all)
+                    
+                    //Modal
+                    VStack(spacing: 0) {
+                        Text("GAME OVER")
+                            .font(.system(.title, design: .rounded))
+                            .fontWeight(.heavy)
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .background(Color("ColorPink"))
+                            .foregroundColor(.white)
+                        Spacer()
+                        //MESSAGE
+                        VStack(alignment: .center, spacing: 16) {
+                            Image("gfx-seven-reel")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 72)
+                            Text("You are Broke! No more coins for you.\nLet's Play Again!")
+                                .font(.system(.body, design: .rounded))
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.gray)
+                                .layoutPriority(1)
+                            Button(action: {
+                                self.showingModal = false
+                                self.coins = 100
+                            }) {
+                                Text("New Game".uppercased())
+                                    .font(.system(.body, design: .rounded))
+                                    .fontWeight(.semibold)
+                                    .accentColor(Color("ColorPink"))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 8)
+                                    .frame(minWidth: 128)
+                                    .background(
+                                        Capsule()
+                                            .strokeBorder(lineWidth: 1.75)
+                                            .foregroundColor(Color("ColorPink"))
+                                    )
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+                    .frame(minWidth: 280, idealWidth: 280, maxWidth: 320, minHeight: 260, idealHeight: 280, maxHeight: 320, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .shadow(color: Color("ColorTransparentBlack"), radius: 6, x: 0, y: 0)
+                }
+            }
+            
         }//: ZSTK
         .sheet(isPresented: $showingInfoView, content: {
             InfoView()

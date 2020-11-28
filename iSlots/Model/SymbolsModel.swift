@@ -15,3 +15,4 @@ enum Symbols: String {
     case seven = "gfx-seven"
     case strawberry = "gfx-strawberry"
 }
+    

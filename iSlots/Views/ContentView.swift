@@ -34,15 +34,7 @@ struct ContentView: View {
     func checkWinning() {
         if reels[0] == reels[1] && reels[0] == reels[2] {
             // PLAYER WINS
-            if symbols[reels[0]] == Symbols.cherry.rawValue {
-                coins += betAmount * 50
-            } else if symbols[reels[0]] == Symbols.seven.rawValue {
-                coins += betAmount * 40
-            } else if symbols[reels[0]] == Symbols.coin.rawValue {
-                coins += betAmount * 30
-            } else {
-                coins += betAmount * 20
-            }
+            coins += assignWinnings()
             // NEW HIGH SCORE
             if coins > highScore {
                 highScore = coins
@@ -51,6 +43,19 @@ struct ContentView: View {
         } else {
             // PLAYER LOSES
             coins -= betAmount
+        }
+    }
+    // ASSIGN WINNINGS
+    func assignWinnings() -> Int {
+        switch symbols[reels[0]] {
+        case Symbols.cherry.rawValue:
+            return betAmount * 50
+        case Symbols.seven.rawValue:
+            return betAmount * 40
+        case Symbols.coin.rawValue:
+            return betAmount * 30
+        default:
+            return betAmount * 20
         }
     }
     // GAME OVER

@@ -10,7 +10,41 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: - PROPERTIES
+    
+    let symbols = [Symbols.bell.rawValue, Symbols.cherry.rawValue, Symbols.coin.rawValue, Symbols.grape.rawValue, Symbols.seven.rawValue, Symbols.strawberry.rawValue]
+    
+    @State private var highScore: Int = 0
+    @State private var coins: Int = 100
+    @State private var betAmount: Int = 10
+    @State private var reels: Array = [0, 1, 2]
     @State private var showingInfoView: Bool = false
+    @State private var bet10: Bool = true
+    @State private var bet20: Bool = false
+    
+    // MARK: - FUNCTIONS
+    
+    // SPIN REELS
+    func spinReels() {
+        reels = reels.map({ _ in
+            Int.random(in: 0...symbols.count - 1)
+        })
+    }
+    // CHECK THE WINNING
+    func checkWinning() {
+        if reels[0] == reels[1] && reels[0] == reels[2] {
+            // PLAYER WINS
+            coins += betAmount * 20
+            // NEW HIGH SCORE
+            if coins > highScore {
+                highScore = coins
+            }
+        } else {
+            // PLAYER LOSES
+            coins -= betAmount
+        }
+    }
+    // GAME OVER
+    
     // MARK: - BODY
     
     var body: some View {
@@ -29,14 +63,14 @@ struct ContentView: View {
                         Text("Your\nCoins".uppercased())
                             .scoreLabelStyle()
                             .multilineTextAlignment(.trailing)
-                        Text("100")
+                        Text("\(coins)")
                             .scoreNumberStyle()
                             .modifier(ScoreNumberModifier())
                     }//: HSTK
                     .modifier(ScoreContainerModifier())
                     Spacer()
                     HStack {
-                        Text("200")
+                        Text("\(highScore)")
                             .scoreNumberStyle()
                             .modifier(ScoreNumberModifier())
                         Text("High\nScore".uppercased())
@@ -50,7 +84,7 @@ struct ContentView: View {
                     // MARK: - REEL 1
                     ZStack {
                         ReelView()
-                        Image("gfx-bell")
+                        Image(symbols[reels[0]])
                             .resizable()
                             .modifier(ImageModifier())
                     }
@@ -58,7 +92,7 @@ struct ContentView: View {
                         // MARK: - REEL 2
                         ZStack {
                             ReelView()
-                            Image("gfx-seven")
+                            Image(symbols[reels[1]])
                                 .resizable()
                                 .modifier(ImageModifier())
                         }
@@ -66,7 +100,7 @@ struct ContentView: View {
                         // MARK: - REEL 3
                         ZStack {
                             ReelView()
-                            Image("gfx-cherry")
+                            Image(symbols[reels[2]])
                                 .resizable()
                                 .modifier(ImageModifier())
                         }
@@ -74,7 +108,8 @@ struct ContentView: View {
                     .frame(maxWidth: 500)
                     // MARK: - SPIN BUTTON
                     Button(action: {
-                        print("Spinning...")
+                        self.spinReels()
+                        self.checkWinning()
                     }) {
                         Image("gfx-spin")
                             .renderingMode(.original)
@@ -92,17 +127,19 @@ struct ContentView: View {
                     // MARK: - BET 20
                     HStack(alignment: .center, spacing: 10) {
                         Button(action: {
-                            print("Bet 20 coins")
+                            self.betAmount = 20
+                            self.bet20 = true
+                            self.bet10 = false
                         }) {
                             Text("20")
                                 .fontWeight(.heavy)
-                                .foregroundColor(.white)
+                                .foregroundColor(bet20 ? Color("ColorYellow") : .white)
                                 .modifier(BetNumberModifier())
                         }
                         .modifier(BetCapsuleModifier())
                         Image("gfx-casino-chips")
                             .resizable()
-                            .opacity(0)
+                            .opacity(bet20 ? 1 : 0)
                             .modifier(CasinoChipsModifier())
                     }
                     
@@ -110,15 +147,17 @@ struct ContentView: View {
                     HStack(alignment: .center, spacing: 10) {
                         Image("gfx-casino-chips")
                             .resizable()
-                            .opacity(1)
+                            .opacity(bet10 ? 1 : 0)
                             .modifier(CasinoChipsModifier())
                         
                         Button(action: {
-                            print("Bet 10 coins")
+                            self.betAmount = 10
+                            self.bet10 = true
+                            self.bet20 = false
                         }) {
                             Text("10")
                                 .fontWeight(.heavy)
-                                .foregroundColor(.yellow)
+                                .foregroundColor(bet10 ? Color("ColorYellow") : .white)
                                 .modifier(BetNumberModifier())
                         }
                         .modifier(BetCapsuleModifier())

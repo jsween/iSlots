@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F219759B2571A7950056B028 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759A2571A7950056B028 /* InfoView.swift */; };
+		F219759F2571B9320056B028 /* SymbolsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759E2571B9320056B028 /* SymbolsModel.swift */; };
 		F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99D925716F710000182D /* iSlotsApp.swift */; };
 		F24F99DC25716F710000182D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99DB25716F710000182D /* ContentView.swift */; };
 		F24F99DE25716F730000182D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24F99DD25716F730000182D /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		F219759A2571A7950056B028 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		F219759E2571B9320056B028 /* SymbolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsModel.swift; sourceTree = "<group>"; };
 		F24F99D625716F710000182D /* iSlots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSlots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24F99D925716F710000182D /* iSlotsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSlotsApp.swift; sourceTree = "<group>"; };
 		F24F99DB25716F710000182D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F219759D2571B90F0056B028 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F219759E2571B9320056B028 /* SymbolsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F24F99CD25716F710000182D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		F24F99D825716F710000182D /* iSlots */ = {
 			isa = PBXGroup;
 			children = (
+				F219759D2571B90F0056B028 /* Model */,
 				F24F99FC257173EC0000182D /* Views */,
 				F24F99FB257173E50000182D /* Helpers */,
 				F24F99FA257173D30000182D /* Sounds */,
@@ -219,6 +230,7 @@
 				F24F99DC25716F710000182D /* ContentView.swift in Sources */,
 				F268EF992571808E00ADD4EA /* LogoView.swift in Sources */,
 				F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */,
+				F219759F2571B9320056B028 /* SymbolsModel.swift in Sources */,
 				F219759B2571A7950056B028 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

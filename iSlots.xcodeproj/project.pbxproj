@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F219759B2571A7950056B028 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759A2571A7950056B028 /* InfoView.swift */; };
 		F219759F2571B9320056B028 /* SymbolsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759E2571B9320056B028 /* SymbolsModel.swift */; };
+		F21975A42572DF460056B028 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21975A32572DF460056B028 /* PlaySound.swift */; };
 		F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99D925716F710000182D /* iSlotsApp.swift */; };
 		F24F99DC25716F710000182D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99DB25716F710000182D /* ContentView.swift */; };
 		F24F99DE25716F730000182D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24F99DD25716F730000182D /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		F219759A2571A7950056B028 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F219759E2571B9320056B028 /* SymbolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsModel.swift; sourceTree = "<group>"; };
+		F21975A32572DF460056B028 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		F24F99D625716F710000182D /* iSlots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSlots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24F99D925716F710000182D /* iSlotsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSlotsApp.swift; sourceTree = "<group>"; };
 		F24F99DB25716F710000182D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				F268EF9B2571811D00ADD4EA /* Modifiers.swift */,
 				F268EF9F257190B900ADD4EA /* Extensions.swift */,
+				F21975A32572DF460056B028 /* PlaySound.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F268EFA3257196F900ADD4EA /* ReelView.swift in Sources */,
+				F21975A42572DF460056B028 /* PlaySound.swift in Sources */,
 				F268EFA0257190B900ADD4EA /* Extensions.swift in Sources */,
 				F268EF9C2571811D00ADD4EA /* Modifiers.swift in Sources */,
 				F24F99DC25716F710000182D /* ContentView.swift in Sources */,

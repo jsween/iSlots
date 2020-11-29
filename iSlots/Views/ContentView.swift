@@ -13,6 +13,8 @@ struct ContentView: View {
     
     let symbols = [Symbols.bell.rawValue, Symbols.cherry.rawValue, Symbols.coin.rawValue, Symbols.grape.rawValue, Symbols.seven.rawValue, Symbols.strawberry.rawValue]
     
+    let haptics = UINotificationFeedbackGenerator()
+    
     @State private var highScore: Int = UserDefaults.standard.integer(forKey: "HighScore")
     @State private var coins: Int = 100
     @State private var betAmount: Int = 10
@@ -23,6 +25,7 @@ struct ContentView: View {
     @State private var showingModal: Bool = false
     @State private var animatingSymbol: Bool = false
     @State private var animatingModal: Bool = false
+    @State private var bet20ButtonDisabled: Bool = false
     
     // MARK: - FUNCTIONS
     
@@ -31,21 +34,49 @@ struct ContentView: View {
         reels = reels.map({ _ in
             Int.random(in: 0...symbols.count - 1)
         })
+        playSound(sound: "spin")
+        haptics.notificationOccurred(.success)
     }
     // CHECK THE WINNING
     func checkWinning() {
         if reels[0] == reels[1] && reels[0] == reels[2] {
             // PLAYER WINS
             coins += assignWinnings()
+            bet20ButtonDisabled = false
             // NEW HIGH SCORE
             if coins > highScore {
                 highScore = coins
+                playSound(sound: "high-score")
                 UserDefaults.standard.set(highScore, forKey: "HighScore")
+            } else {
+                playSound(sound: "win")
             }
         } else {
             // PLAYER LOSES
             coins -= betAmount
+            if coins < 20 {
+                placeBet10()
+                bet20ButtonDisabled = true
+            }
         }
+    }
+    // BET 20
+    func placeBet20() {
+        self.betAmount = 20
+        self.bet20 = true
+        self.bet10 = false
+        playSound(sound: "casino-chips")
+        haptics.notificationOccurred(.success)
+
+    }
+    // BET 10
+    func placeBet10() {
+        self.betAmount = 10
+        self.bet10 = true
+        self.bet20 = false
+        playSound(sound: "casino-chips")
+        haptics.notificationOccurred(.success)
+
     }
     // ASSIGN WINNINGS
     func assignWinnings() -> Int {
@@ -65,6 +96,7 @@ struct ContentView: View {
         if coins <= 0 {
             // SHOW MODAL
             showingModal = true
+            playSound(sound: "game-over")
         }
     }
     // RESET
@@ -72,8 +104,9 @@ struct ContentView: View {
         UserDefaults.standard.set(0, forKey: "HighScore")
         highScore = 0
         coins = 100
-        bet10 = true
-        bet20 = false
+        placeBet10()
+        bet20ButtonDisabled = false
+        playSound(sound: "chimeup")
     }
     // MARK: - BODY
     
@@ -122,6 +155,7 @@ struct ContentView: View {
                             .animation(.easeOut(duration: Double.random(in: 0.5...0.7)))
                             .onAppear(perform: {
                                 self.animatingSymbol.toggle()
+                                playSound(sound: "riseup")
                             })
                     }
                     HStack(alignment: .center, spacing: 5) {
@@ -178,16 +212,12 @@ struct ContentView: View {
                 }//: SLOT MACHINE
                 .layoutPriority(2)
                 // MARK: - FOOTER
-                
                 Spacer()
-                
                 HStack {
                     // MARK: - BET 20
                     HStack(alignment: .center, spacing: 10) {
                         Button(action: {
-                            self.betAmount = 20
-                            self.bet20 = true
-                            self.bet10 = false
+                            placeBet20()
                         }) {
                             Text("20")
                                 .fontWeight(.heavy)
@@ -195,12 +225,14 @@ struct ContentView: View {
                                 .modifier(BetNumberModifier())
                         }
                         .modifier(BetCapsuleModifier())
+                        .opacity(bet20ButtonDisabled ? 0 : 1)
                         Image("gfx-casino-chips")
                             .resizable()
                             .offset(x: bet20 ? 0 : 20)
                             .opacity(bet20 ? 1 : 0)
                             .modifier(CasinoChipsModifier())
                     }
+                    .disabled(bet20ButtonDisabled)
                     Spacer()
                     
                     // MARK: - BET 10
@@ -212,9 +244,7 @@ struct ContentView: View {
                             .modifier(CasinoChipsModifier())
                         
                         Button(action: {
-                            self.betAmount = 10
-                            self.bet10 = true
-                            self.bet20 = false
+                            placeBet10()
                         }) {
                             Text("10")
                                 .fontWeight(.heavy)
@@ -277,12 +307,13 @@ struct ContentView: View {
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.gray)
                                 .layoutPriority(1)
+                            // NEW GAME
                             Button(action: {
                                 self.showingModal = false
                                 self.animatingModal = false
-                                self.bet10 = true
-                                self.bet20 = false
+                                self.placeBet10()
                                 self.coins = 100
+                                self.bet20ButtonDisabled = false
                             }) {
                                 Text("New Game".uppercased())
                                     .font(.system(.body, design: .rounded))

@@ -10,6 +10,8 @@
 		F219759B2571A7950056B028 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759A2571A7950056B028 /* InfoView.swift */; };
 		F219759F2571B9320056B028 /* SymbolsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F219759E2571B9320056B028 /* SymbolsModel.swift */; };
 		F21975A42572DF460056B028 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21975A32572DF460056B028 /* PlaySound.swift */; };
+		F21975AD257444B30056B028 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21975AC257444B30056B028 /* Stickers.xcassets */; };
+		F21975B1257444B30056B028 /* iSlots Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F21975AA257444B20056B028 /* iSlots Stickers.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F24F99DA25716F710000182D /* iSlotsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99D925716F710000182D /* iSlotsApp.swift */; };
 		F24F99DC25716F710000182D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24F99DB25716F710000182D /* ContentView.swift */; };
 		F24F99DE25716F730000182D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24F99DD25716F730000182D /* Assets.xcassets */; };
@@ -29,11 +31,38 @@
 		F268EFA3257196F900ADD4EA /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268EFA2257196F900ADD4EA /* ReelView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F21975AF257444B30056B028 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F24F99CE25716F710000182D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F21975A9257444B20056B028;
+			remoteInfo = "iSlots Stickers";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F21975B5257444B30056B028 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F21975B1257444B30056B028 /* iSlots Stickers.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F219759A2571A7950056B028 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F219759E2571B9320056B028 /* SymbolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsModel.swift; sourceTree = "<group>"; };
 		F21975A32572DF460056B028 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		F21975A62574431C0056B028 /* iSlots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iSlots.entitlements; sourceTree = "<group>"; };
+		F21975AA257444B20056B028 /* iSlots Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iSlots Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F21975AC257444B30056B028 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		F21975AE257444B30056B028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F24F99D625716F710000182D /* iSlots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSlots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24F99D925716F710000182D /* iSlotsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSlotsApp.swift; sourceTree = "<group>"; };
 		F24F99DB25716F710000182D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,10 +103,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F21975AB257444B20056B028 /* iSlots Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				F21975AC257444B30056B028 /* Stickers.xcassets */,
+				F21975AE257444B30056B028 /* Info.plist */,
+			);
+			path = "iSlots Stickers";
+			sourceTree = "<group>";
+		};
 		F24F99CD25716F710000182D = {
 			isa = PBXGroup;
 			children = (
 				F24F99D825716F710000182D /* iSlots */,
+				F21975AB257444B20056B028 /* iSlots Stickers */,
 				F24F99D725716F710000182D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F24F99D625716F710000182D /* iSlots.app */,
+				F21975AA257444B20056B028 /* iSlots Stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +194,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F21975A9257444B20056B028 /* iSlots Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F21975B2257444B30056B028 /* Build configuration list for PBXNativeTarget "iSlots Stickers" */;
+			buildPhases = (
+				F21975A8257444B20056B028 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iSlots Stickers";
+			productName = "iSlots Stickers";
+			productReference = F21975AA257444B20056B028 /* iSlots Stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		F24F99D525716F710000182D /* iSlots */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F24F99E525716F730000182D /* Build configuration list for PBXNativeTarget "iSlots" */;
@@ -161,10 +216,12 @@
 				F24F99D225716F710000182D /* Sources */,
 				F24F99D325716F710000182D /* Frameworks */,
 				F24F99D425716F710000182D /* Resources */,
+				F21975B5257444B30056B028 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F21975B0257444B30056B028 /* PBXTargetDependency */,
 			);
 			name = iSlots;
 			productName = iSlots;
@@ -180,6 +237,9 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					F21975A9257444B20056B028 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					F24F99D525716F710000182D = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -199,11 +259,20 @@
 			projectRoot = "";
 			targets = (
 				F24F99D525716F710000182D /* iSlots */,
+				F21975A9257444B20056B028 /* iSlots Stickers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F21975A8257444B20056B028 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21975AD257444B30056B028 /* Stickers.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F24F99D425716F710000182D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,7 +312,45 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F21975B0257444B30056B028 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F21975A9257444B20056B028 /* iSlots Stickers */;
+			targetProxy = F21975AF257444B30056B028 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F21975B3257444B30056B028 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZH24N38H;
+				INFOPLIST_FILE = "iSlots Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsween.iSlots.iSlots-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F21975B4257444B30056B028 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9XZH24N38H;
+				INFOPLIST_FILE = "iSlots Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jsween.iSlots.iSlots-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F24F99E325716F730000182D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -411,6 +518,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F21975B2257444B30056B028 /* Build configuration list for PBXNativeTarget "iSlots Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F21975B3257444B30056B028 /* Debug */,
+				F21975B4257444B30056B028 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F24F99D125716F710000182D /* Build configuration list for PBXProject "iSlots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

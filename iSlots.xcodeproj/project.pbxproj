@@ -33,6 +33,7 @@
 		F219759A2571A7950056B028 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F219759E2571B9320056B028 /* SymbolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsModel.swift; sourceTree = "<group>"; };
 		F21975A32572DF460056B028 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		F21975A62574431C0056B028 /* iSlots.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iSlots.entitlements; sourceTree = "<group>"; };
 		F24F99D625716F710000182D /* iSlots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSlots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F24F99D925716F710000182D /* iSlotsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSlotsApp.swift; sourceTree = "<group>"; };
 		F24F99DB25716F710000182D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		F24F99D825716F710000182D /* iSlots */ = {
 			isa = PBXGroup;
 			children = (
+				F21975A62574431C0056B028 /* iSlots.entitlements */,
 				F219759D2571B90F0056B028 /* Model */,
 				F24F99FC257173EC0000182D /* Views */,
 				F24F99FB257173E50000182D /* Helpers */,
@@ -363,6 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iSlots/iSlots.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iSlots/Preview Content\"";
 				DEVELOPMENT_TEAM = 9XZH24N38H;
@@ -375,6 +378,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsween.iSlots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -385,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iSlots/iSlots.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iSlots/Preview Content\"";
 				DEVELOPMENT_TEAM = 9XZH24N38H;
@@ -397,6 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsween.iSlots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
